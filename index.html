@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign in — Flow Sentinel</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div id="login">
+  <form class="login-card" id="loginForm">
+    <div class="login-brand">
+      <div class="mark"><i class="fas fa-shield-halved"></i></div>
+      Flow<span style="color:var(--red)">.</span>
+      <span style="font-size:.78rem;color:var(--muted);font-weight:500;margin-left:4px">SENTINEL</span>
+    </div>
+    <p>Real-time fraud & risk decisioning.</p>
+    <div class="login-field"><label>Email</label><input id="le" type="email" value="analyst@flow.co.bw" required></div>
+    <div class="login-field"><label>Password</label><input id="lp" type="password" value="sentinel" required></div>
+    <button class="btn btn-primary btn-block" type="submit">Sign in <i class="fas fa-arrow-right"></i></button>
+    <p class="login-hint">Demo: <b>analyst@flow.co.bw</b> / <b>sentinel</b></p>
+  </form>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+document.getElementById('loginForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const ok = Auth.login(
+    document.getElementById('le').value,
+    document.getElementById('lp').value
+  );
+  if (ok) window.location.href = 'dashboard.html';
+  else alert('Invalid credentials');
+});
+</script>
+</body>
+</html>
